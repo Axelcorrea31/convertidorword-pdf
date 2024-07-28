@@ -607,7 +607,8 @@ app.post('/HiuploadPdfToJpg', upload.single('file'), async (req, res) => {
     }
 });
 
+const PORT = process.env.PORT || 5000;  // Usar el puerto de Heroku o, si no está definido, el puerto 3000 localmente
 
-app.listen(5000, () => {
-    console.log('Listening on port 5000');
-});
+app.listen(PORT, () => {
+    console.log(`Server now running on port ${PORT}`);
+  });
