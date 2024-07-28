@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <title>Carga</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const params = new URLSearchParams(window.location.search);
+            
+            const filename = params.get('combinedFile') || params.get('file'); // Intentar obtener 'combinedFile' o 'file'
+            
+            function checkStatus() {
+                fetch(`/check-status?file=${filename}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.status === 'ready') {
+                            // Primero descargar el archivo
+                            window.location.href = `/download-file?file=${filename}`;
+    
+                            // Espera un poco para asegurarse de que la descarga ha iniciado y luego redirecciona
+                            setTimeout(() => {
+                                // Cambiar a la página de descarga final
+                                window.location.href = `/pantalladescarga.html?file=${filename}`;
+                            }, 5000); // Espera 5 segundos antes de redirigir
+                        } else {
+                            setTimeout(checkStatus, 1000); // Revisa de nuevo en un segundo
+                        }
+                    }).catch(error => console.error('Error:', error));
+            }
+    
+            checkStatus();
+        });
+    </script>
+    <style>
+            h1,h2,h3{
+        font-family: "Roboto";
+    }
+    p{
+        font-family: "Open Sans";
+        font-weight: 300;
+    }
+        .loader {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-block;
+  border-top: 4px solid #2c6d47;
+  border-right: 4px solid transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+.loader::after {
+  content: '';  
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border-bottom: 4px solid #004aad;
+  border-left: 4px solid transparent;
+}
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white">
+            <div class="container d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                    <a class="navbar-brand" href="index.html">
+                        <img src="img/CONVERDOC (1) (1).png" alt="" style="width: 100%; height: auto; max-width: 50px;">
+                    </a>
+                    <span class="navbar-text" style="font-weight: bold; font-size: 24px;color: #2c6d47;">Conv<span class="navbar-text" style="font-weight: bold; font-size: 24px; color:#004aad;">erdoc</span></span>
+                </div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                WORD
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="Wordapdf.html">WORD A PDF</a>
+                                <a class="dropdown-item" href="PdfaWord.html">PDF A WORD</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            EXCEL
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="ExcelaPdf.html">EXCEL A PDF</a>
+                            <a class="dropdown-item" href="PdfaExcel.html">PDF A EXCEL</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            POWER POINT
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="PoweraPdf.html">POWER POINT A PDF</a>
+                            <a class="dropdown-item" href="pdfaPower.html">PDF A POWER POINT</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            JPG
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="JpgaPdf.html">JPG A PDF</a>
+                            <a class="dropdown-item" href="pdfajpg.html">PDF A JPG</a>
+                            </div>
+                        </li>
+                        <!-- Continúa con los demás elementos li -->
+                    </ul>
+                </div>
+            </div>
+        </nav>
+      
+
+    </header>
+    <div class="container">
+        <div class="d-flex flex-column justify-content align-items-center mt-5 ">
+            <h1 style="font-size: 50px;">Conversión en progreso...</h1>
+            <p class="pt-3">Por favor espere mientras preparamos su archivo.</p>
+            <span class="loader mt-5"></span>
+
+
+        </div>
+    </div>
+</body>
+</html>

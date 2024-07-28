@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+<title>ConverDoc</title>
+<style>
+            /* Oculta completamente el input de archivo */
+            .file-input {
+            width: 0.1px;
+            height: 0.1px;
+            opacity: 0;
+            overflow: hidden;
+            position: absolute;
+            z-index: -1;
+        }
+        .subheading {
+        margin: 0;
+        font-size: 1.25rem;
+        max-width: 600px;
+        position: relative;
+    }
+    .btn-principal {
+        height: 80px;
+    }
+    nav {
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Horizontal offset, vertical offset, blur radius, color */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1030; /* Asegúrate de que la nav esté sobre otros elementos */
+}
+    h1,h2,h3{
+        font-family: "Roboto";
+    }
+    p{
+        font-family: "Open Sans";
+        font-weight: 300;
+    }
+</style>
+</head>
+<body class="bg-light">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white">
+            <div class="container d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                    <a class="navbar-brand" href="index.html">
+                        <img src="../img/CONVERDOC (1) (1).png" alt="" style="width: 100%; height: auto; max-width: 50px;">
+                    </a>
+                    <span class="navbar-text" style="font-weight: bold; font-size: 24px;color: #2c6d47;">Conv<span class="navbar-text" style="font-weight: bold; font-size: 24px; color:#004aad;">erdoc</span></span>
+                </div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                WORD
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="Wordapdf.html">WORD TO PDF</a>
+                                <a class="dropdown-item" href="PdfaWord.html">PDF TO WORD</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            EXCEL
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="ExcelaPdf.html">EXCEL TO PDF</a>
+                            <a class="dropdown-item" href="PdfaExcel.html">PDF TO EXCEL</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            POWERPOINT
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="PoweraPdf.html">POWERPOINT TO PDF</a>
+                            <a class="dropdown-item" href="pdfaPower.html">PDF TO POWER POINT</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            JPG
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="JpgaPdf.html">JPG TO PDF</a>
+                            <a class="dropdown-item" href="pdfajpg.html">PDF TO JPG</a>
+                            </div>
+                        </li>
+                        <!-- Continúa con los demás elementos li -->
+                    </ul>
+                </div>
+            </div>
+        </nav>
+      
+
+    </header>
+    <section>
+        <div class="container">
+            <div class="d-flex flex-column align-items-center justify-content-center bg-light mt-5 text-center">
+                <h1 style="font-size: 50px;">Convert EXCEL to PDF</h1>
+                <p class="subheading mb-3" >Convert up to 30 EXCEL files simultaneously into a single PDF with the highest quality, maintaining the format and content.</p>
+                <form action="/Enupload" method="post" enctype="multipart/form-data">
+                    <!-- Botón personalizado de Bootstrap -->
+                    <button type="button" class="btn btn-principal btn-primary btn-lg" id="OpenFile"style="font-family:Open Sans ;">
+                        Click here to select an EXCEL document
+                    </button>
+                    <div id="fileName" class="mt-2"></div>
+
+                    <!-- Input de archivo escondido -->
+                    <input type="file" name="files" multiple required class="file-input" accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+                    <!-- Botón de envío -->
+                     <div>
+                    <button type="submit" class="btn btn-success btn-lg mt-4 "style="font-family:Open Sans ;">Load and convert</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+    <script>
+        document.getElementById('OpenFile').addEventListener('click', function() {
+            document.querySelector('.file-input').click(); // Simula un clic en el input de archivo
+        });
+        
+        document.querySelector('.file-input').addEventListener('change', function() {
+            if (this.files.length > 0) {
+                var fileName = this.files[0].name;
+                var extension = fileName.split('.').pop().toLowerCase();
+                var validExtensions = ['xls', 'xlsx'];
+        
+                if (validExtensions.includes(extension)) {
+                    document.getElementById('fileName').textContent = `Archivo cargado: ${fileName}`;
+                } else {
+                    document.getElementById('fileName').textContent = "Error: Tipo de archivo no permitido. Seleccione un documento Excel.";
+                    this.value = ''; // Resetea el input de archivo
+                }
+            } else {
+                document.getElementById('fileName').textContent = "No se ha seleccionado ningún archivo.";
+            }
+        });
+        
+        function convertToPDF() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "/convertFromOffice?filename=" + encodeURIComponent(document.querySelector('input[type=file]').files[0].name));
+            xhr.responseType = 'blob';
+        
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    var a = document.createElement('a');
+                    a.href = window.URL.createObjectURL(xhr.response);
+                    a.download = 'converted.pdf';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                } else {
+                    alert('Error converting file!');
+                }
+            };
+            xhr.send();
+        }
+        </script>
+      
+</body>
+</html>
