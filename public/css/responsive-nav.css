@@ -1,0 +1,41 @@
+@charset "utf-8";
+/* CSS Document */
+/*! responsive-nav.js v1.0.20 by @viljamis */
+
+#menu1 ul {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: block;
+  list-style: none;
+}
+
+#menu1 li {
+  width: 100%;
+  display: block;
+}
+
+.js #menu1 {
+  clip: rect(0 0 0 0);
+  max-height: 0;
+  position: absolute;
+  display: block;
+  overflow: hidden;
+  zoom: 1;
+}
+
+#menu1.opened {
+  max-height: 9999px;
+}
+
+@media screen and (min-width: 768px) {
+  .js #menu1 {
+    position: relative;
+  }
+  .js #menu1.closed {
+    max-height: none;
+  }
+  #menu1-toggle {
+    display: none;
+  }
+}

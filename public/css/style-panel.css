@@ -1,0 +1,39 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* aca puse estilos que jose pone en el archivo styles para no hacer lio */
+
+.menu-list{border-bottom:1px dotted #ccc;padding:0 0 8px;margin:0 0 20px;}
+	.types{float:left;}
+	.types li, .menu-list ul{margin:0;display:inline-block;}
+	.types li{border-right:1px dotted #ccc;margin:0 2px 0 0;}
+	.types li:last-child{border:0;}
+
+	.types li a{display:inline-block;padding:0 10px 0 19px;position:relative;color:#000;}
+	.types li a:hover{text-decoration:underline;}
+	.types li.current a{text-decoration:none;cursor:default;color:#DC0A0A;font-weight:bold;}
+		.types li a:before{content:"";display:block;position:absolute;top:1px;left:0;width:15px;height:15px;}
+		.types li.current a:before{opacity:0.6;}
+		.types li.aList a:before{background:url(../img/ico/ico.png) -130px -35px;top:2px;}
+		.types li.aMap a:before{background:url(../img/ico/ico.png) -146px -35px}
+		.types li.aFot a:before{background:url(../img/ico/ico.png) -162px -35px;}
+
+
+/*pagnador*/
+.paginator{text-align:center;padding:10px 0;}
+	.paginator ul, .paginator li, .paginator a{display:inline-block;margin:0;}
+	a.pag-nav{font-weight:bold;color:#DC0A0A;padding:0 5px}
+	a.pag-nav:hover{text-decoration:underline;color:#DC0A0A;}
+
+	.paginator li a{width:30px;height:30px;line-height:31px;color:#000;text-align:center;border:1px solid #ccc;
+		border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;margin:0 4px;font-weight:bold;
+	}
+
+	.paginator li a.active{color:#DC0A0A;cursor:default;
+		background-image: -ms-linear-gradient(top, #ddd 0%, #fff 100%);
+		background-image: -moz-linear-gradient(top, #ddd 0%, #fff 100%);
+		background-image: -o-linear-gradient(top, #ddd 0%, #fff 100%);
+		background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #ddd), color-stop(1, #fff));
+		background-image: -webkit-linear-gradient(top, #ddd 0%, #fff 100%);
+		background-image: linear-gradient(to bottom, #ddd 0%, #fff 100%);
+	}

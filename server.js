@@ -5,8 +5,9 @@ const multer = require('multer');
 const { PDFNet } = require('@pdftron/pdfnet-node');
 const { exec } = require('child_process');
 const archiver = require('archiver');
-
-
+const pdf2json = require('pdf2json');
+const XLSX = require('xlsx');
+const axios = require('axios');
 const fileStorage = {};
 
 const storage = multer.diskStorage({
@@ -189,109 +190,168 @@ app.get('/download-file', (req, res) => {
 
 
 
-app.post('/uploadPdfToWord', upload.single('file'), async (req, res) => {
+app.post('/uploadPdfToProtect', upload.single('file'), async (req, res) => {
     if (req.file) {
+        const userPassword = req.body.userPassword; // Captura la contraseña ingresada por el usuario
+
+        // Redirige al usuario a la pantalla de carga
         res.redirect(`/pantallacarga.html?file=${encodeURIComponent(req.file.filename)}`);
 
-        const inputPath = path.resolve(__dirname, `upload/${req.file.filename}`);
-        const outputPath = path.resolve(__dirname, `upload/${req.file.filename.replace('.pdf', '.docx')}`);
+        const fileUrl = `https://www.converdoc.com/converdoc/upload/${req.file.filename}`;
+        
 
         try {
-            PDFNet.addResourceSearchPath("C:/Users/hp/Downloads/StructuredOutputWindows/Lib/Windows/");
-            await PDFNet.initialize('demo:1720915327177:7f996ec203000000002c8073caa3bbe129d4ea16116d9048eb43e60f79');
-            await PDFNet.runWithCleanup(async () => {
-                const pdfDoc = await PDFNet.PDFDoc.createFromFilePath(inputPath);
-                await pdfDoc.initSecurityHandler();
-                const result = await PDFNet.Convert.toWord(pdfDoc, outputPath);
-                fileStorage[req.file.filename] = outputPath;
-
-
-            });
-            fileStorage[req.file.filename] = outputPath; // Guardar la ruta para acceso posterior
-
-        } catch (err) {
-            console.error('Error during PDF to Word conversion:', err);
-            res.status(500).send('Conversion failed with error: ' + err.message);
-        }
-    } else {
-        res.status(400).send('No file uploaded');
-    }
-});
-app.post('/uploadPdfToExcel', upload.single('file'), async (req, res) => {
-    if (req.file) {
-        res.redirect(`/pantallacarga.html?file=${encodeURIComponent(req.file.filename)}`);
-
-        const inputPath = path.resolve(__dirname, `upload/${req.file.filename}`);
-        const outputPath = path.resolve(__dirname, `upload/${req.file.filename.replace('.pdf', '.xlsx')}`);
-
-        try {
-            PDFNet.addResourceSearchPath("C:/Users/hp/Downloads/StructuredOutputWindows/Lib/Windows/");
-            await PDFNet.initialize('demo:1720915327177:7f996ec203000000002c8073caa3bbe129d4ea16116d9048eb43e60f79');
-            await PDFNet.runWithCleanup(async () => {
-                const pdfDoc = await PDFNet.PDFDoc.createFromFilePath(inputPath);
-                await pdfDoc.initSecurityHandler();
-                await PDFNet.Convert.toExcel(pdfDoc, outputPath);
-            });
-
-            fileStorage[req.file.filename] = outputPath; // Guardar la ruta para acceso posterior
-        } catch (err) {
-            console.error('Error during PDF to Excel conversion:', err);
-            res.status(500).send('Conversion failed with error: ' + err.message);
-        }
-    } else {
-        res.status(400).send('No file uploaded');
-    }
-});
-
-
-app.post('/uploadPdfToPowerPoint', upload.single('file'), async (req, res) => {
-    if (req.file) {
-        res.redirect(`/pantallacarga.html?file=${encodeURIComponent(req.file.filename)}`);
-        const inputPath = path.resolve(__dirname, `upload/${req.file.filename}`);
-        const outputPath = path.resolve(__dirname, `upload/${req.file.filename.replace('.pdf', '.pptx')}`);
-
-        try {
-            PDFNet.addResourceSearchPath("C:/Users/hp/Downloads/StructuredOutputWindows/Lib/Windows/");
-            await PDFNet.initialize('demo:1720915327177:7f996ec203000000002c8073caa3bbe129d4ea16116d9048eb43e60f79');
-            await PDFNet.runWithCleanup(async () => {
-                const pdfDoc = await PDFNet.PDFDoc.createFromFilePath(inputPath);
-                await pdfDoc.initSecurityHandler();
-                const result = await PDFNet.Convert.toPowerPoint(pdfDoc, outputPath);
-
-            });
-
-            fileStorage[req.file.filename] = outputPath; // Guardar la ruta para acceso posterior
-        } catch (err) {
-            console.error('Error during PDF to Excel conversion:', err);
-            res.status(500).send('Conversion failed with error: ' + err.message);
-        }
-    } else {
-        res.status(400).send('No file uploaded');
-    }
-});
-app.post('/uploadPdfToJpg', upload.single('file'), async (req, res) => {
-    if (req.file) {
-        const inputPath = path.resolve(__dirname, `upload/${req.file.filename}`);
-        const outputFolder = path.resolve(__dirname, `upload/${req.file.filename}_jpgs`);
-        fs.mkdirSync(outputFolder, { recursive: true });
-
-        try {
-            await PDFNet.initialize('demo:1720915327177:7f996ec203000000002c8073caa3bbe129d4ea16116d9048eb43e60f79');
-            await PDFNet.runWithCleanup(async () => {
-                const pdfDoc = await PDFNet.PDFDoc.createFromFilePath(inputPath);
-                await pdfDoc.initSecurityHandler();
-
-                const pdfDraw = await PDFNet.PDFDraw.create(100); // 100 is the DPI (dots per inch)
-                const pageCount = await pdfDoc.getPageCount();
-
-                for (let i = 1; i <= pageCount; ++i) {
-                    const page = await pdfDoc.getPage(i);
-                    const outputPath = path.join(outputFolder, `page_${i}.jpg`);
-                    await pdfDraw.export(page, outputPath, 'JPEG');
+            // Enviar la solicitud a la API para proteger el PDF
+            const apiResponse = await axios.post('https://api.pdf.co/v1/pdf/security/add', {
+                url: fileUrl,
+                userPassword: userPassword, // Puedes modificar o hacer dinámica esta contraseña
+                EncryptionAlgorithm: "AES_128bit",
+                AllowPrintDocument: false,
+                AllowFillForms: false,
+                AllowModifyDocument: false,
+                AllowContentExtraction: false,
+                AllowModifyAnnotations: false,
+                PrintQuality: "LowResolution",
+                name: `protected-${req.file.filename}`,
+                async: false 
+            }, {
+                headers: {
+                    'x-api-key': 'caxel3131@gmail.com_ttwSGF4SzDWsNrgreutGJTBGhAzWkWF2lr17uZ6wZVcwQ3azgg4UDOGOapWAg2ru', // Reemplaza esto con tu clave API
+                    'Content-Type': 'application/json'
                 }
             });
 
-            // Creating a zip file
+            // Obtener el nombre de archivo y la URL de descarga
+            const outputFileName = apiResponse.data.name;
+            const fileDownloadUrl = apiResponse.data.url;
+
+            // Descargar el archivo desde la URL proporcionada
+            const fileDownloadResponse = await axios.get(fileDownloadUrl, {
+                responseType: 'arraybuffer'
+            });
+
+            // Guardar el archivo descargado
+            const outputPath = path.resolve(__dirname, `upload/${outputFileName}`);
+            fs.writeFileSync(outputPath, fileDownloadResponse.data);
+            fileStorage[req.file.filename] = outputPath; // Guardar la ruta para acceso posterior
+
+            console.log(`Archivo protegido y guardado en ${outputPath}`);
+
+            res.status(200).json({
+                message: `Archivo protegido y guardado en ${outputPath}`,
+                fileName: req.file.filename,
+                protectedFileName: outputFileName,
+                downloadUrl: fileDownloadUrl,
+                responseStatus: fileDownloadResponse.status
+            });
+
+        } catch (err) {
+            console.error('Error during PDF protection:', err);
+            if (!res.headersSent) {
+                res.status(500).send('Protection failed with error: ' + err.message);
+            }
+        }
+    } else {
+        if (!res.headersSent) {
+            res.status(400).send('No file uploaded');
+        }
+    }
+});
+
+
+app.post('/uploadPdfToExcel', upload.single('file'), async (req, res) => {
+    if (req.file) {
+        // Redirige al usuario a la pantalla de carga
+        res.redirect(`/pantallacarga.html?file=${encodeURIComponent(req.file.filename)}`);
+
+        const fileUrl = `https://www.converdoc.com/converdoc/upload/${req.file.filename}`;
+
+        try {
+            // Enviar la solicitud a la API
+            const apiResponse = await axios.post('https://api.pdf.co/v1/pdf/convert/to/xlsx', {
+                url: fileUrl,
+                async: false 
+            }, {
+                headers: {
+                    'x-api-key': 'caxel3131@gmail.com_ttwSGF4SzDWsNrgreutGJTBGhAzWkWF2lr17uZ6wZVcwQ3azgg4UDOGOapWAg2ru', // Reemplaza esto con tu clave API
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            // Obtener el nombre de archivo y la URL de descarga
+            const outputFileName = apiResponse.data.name;
+            const fileDownloadUrl = apiResponse.data.url;
+
+            // Descargar el archivo desde la URL proporcionada
+            const fileDownloadResponse = await axios.get(fileDownloadUrl, {
+                responseType: 'arraybuffer'
+            });
+
+            // Guardar el archivo descargado
+            const outputPath = path.resolve(__dirname, `upload/${outputFileName}`);
+            fs.writeFileSync(outputPath, fileDownloadResponse.data);
+            fileStorage[req.file.filename] = outputPath; // Guardar la ruta para acceso posterior
+
+            console.log(`Archivo convertido y guardado en ${outputPath}`);
+
+            res.status(200).json({
+                message: `Archivo convertido y guardado en ${outputPath}`,
+                fileName: req.file.filename,
+                convertedFileName: outputFileName,
+                downloadUrl: fileDownloadUrl,
+                responseStatus: fileDownloadResponse.status
+            });
+
+        } catch (err) {
+            console.error('Error during PDF to Excel conversion:', err);
+            if (!res.headersSent) {
+                res.status(500).send('Conversion failed with error: ' + err.message);
+            }
+        }
+    } else {
+        if (!res.headersSent) {
+            res.status(400).send('No file uploaded');
+        }
+    }
+});
+
+app.post('/uploadPdfToJpg', upload.single('file'), async (req, res) => {
+    if (req.file) {
+        // Redirige al usuario a la pantalla de carga
+        res.redirect(`/pantallacarga.html?file=${encodeURIComponent(req.file.filename)}`);
+
+        const fileUrl = `https://www.converdoc.com/converdoc/upload/${req.file.filename}`;
+
+        try {
+            // Enviar la solicitud a la API para convertir el PDF a imágenes JPG
+            const apiResponse = await axios.post('https://api.pdf.co/v1/pdf/convert/to/jpg', {
+                url: fileUrl,
+                inline: true,
+                pages: "0-",
+                async: false
+            }, {
+                headers: {
+                    'x-api-key': 'caxel3131@gmail.com_ttwSGF4SzDWsNrgreutGJTBGhAzWkWF2lr17uZ6wZVcwQ3azgg4UDOGOapWAg2ru', // Reemplaza esto con tu clave API
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            // Crear una carpeta para las imágenes JPG
+            const outputFolder = path.resolve(__dirname, `upload/${req.file.filename}_jpgs`);
+            fs.mkdirSync(outputFolder, { recursive: true });
+
+            // Descargar las imágenes desde la URL proporcionada
+            const downloadUrls = apiResponse.data.urls; // URLs de las imágenes generadas
+            for (const [index, url] of downloadUrls.entries()) {
+                const fileDownloadResponse = await axios.get(url, {
+                    responseType: 'arraybuffer'
+                });
+
+                const outputPath = path.join(outputFolder, `page_${index + 1}.jpg`);
+                fs.writeFileSync(outputPath, fileDownloadResponse.data);
+            }
+
+            // Crear un archivo ZIP con las imágenes JPG
             const zipPath = path.resolve(__dirname, `upload/${req.file.filename}.zip`);
             const output = fs.createWriteStream(zipPath);
             const archive = archiver('zip', { zlib: { level: 9 } });
@@ -299,24 +359,76 @@ app.post('/uploadPdfToJpg', upload.single('file'), async (req, res) => {
             archive.pipe(output);
             archive.directory(outputFolder, false);
             await archive.finalize();
-
-            output.on('close', () => {
-                // Almacena la ruta del archivo en fileStorage
-                fileStorage[req.file.filename] = zipPath;
-
-                // Redirección con la ruta del archivo como parámetro
-                res.redirect(`/pantallacarga.html?file=${encodeURIComponent(req.file.filename)}`);
-            });
+            fileStorage[req.file.filename] = zipPath;
+            
 
         } catch (err) {
             console.error('Error during PDF to JPG conversion:', err);
-            res.status(500).send('Conversion failed with error: ' + err.message);
+            if (!res.headersSent) {
+                res.status(500).send('Conversion failed with error: ' + err.message);
+            }
         }
     } else {
-        res.status(400).send('No file uploaded');
+        if (!res.headersSent) {
+            res.status(400).send('No file uploaded');
+        }
     }
 });
+app.post('/uploadPdfToPowerPoint', upload.single('file'), async (req, res) => {
+    if (req.file) {
+        // Redirige al usuario a la pantalla de carga
+        res.redirect(`/pantallacarga.html?file=${encodeURIComponent(req.file.filename)}`);
 
+        const fileUrl = `https://www.converdoc.com/converdoc/upload/${req.file.filename}`;
+
+        try {
+            // Enviar la solicitud a la API
+            const apiResponse = await axios.post('https://api.pdf.co/v1/pdf/convert/to/html', {
+                url: fileUrl,
+                async: false 
+            }, {
+                headers: {
+                    'x-api-key': 'caxel3131@gmail.com_ttwSGF4SzDWsNrgreutGJTBGhAzWkWF2lr17uZ6wZVcwQ3azgg4UDOGOapWAg2ru', // Reemplaza esto con tu clave API
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            // Obtener el nombre de archivo y la URL de descarga
+            const outputFileName = apiResponse.data.name;
+            const fileDownloadUrl = apiResponse.data.url;
+
+            // Descargar el archivo desde la URL proporcionada
+            const fileDownloadResponse = await axios.get(fileDownloadUrl, {
+                responseType: 'arraybuffer'
+            });
+
+            // Guardar el archivo descargado
+            const outputPath = path.resolve(__dirname, `upload/${outputFileName}`);
+            fs.writeFileSync(outputPath, fileDownloadResponse.data);
+            fileStorage[req.file.filename] = outputPath; // Guardar la ruta para acceso posterior
+
+            console.log(`Archivo convertido y guardado en ${outputPath}`);
+
+            res.status(200).json({
+                message: `Archivo convertido y guardado en ${outputPath}`,
+                fileName: req.file.filename,
+                convertedFileName: outputFileName,
+                downloadUrl: fileDownloadUrl,
+                responseStatus: fileDownloadResponse.status
+            });
+
+        } catch (err) {
+            console.error('Error during PDF to Excel conversion:', err);
+            if (!res.headersSent) {
+                res.status(500).send('Conversion failed with error: ' + err.message);
+            }
+        }
+    } else {
+        if (!res.headersSent) {
+            res.status(400).send('No file uploaded');
+        }
+    }
+});
 // Ruta para convertir con PDFTron
 app.get('/Word-a-Pdf', (req, res) => {
     const filename = decodeURIComponent(req.query.filename);

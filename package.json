@@ -13,9 +13,13 @@
   "dependencies": {
     "@pdftron/pdfnet-node": "^10.10.0",
     "archiver": "^7.0.1",
+    "aws-sdk": "^2.1664.0",
+    "axios": "^1.7.4",
     "docx-pdf": "^0.0.1",
     "express": "^4.19.2",
     "libreoffice-convert": "^1.5.1",
-    "multer": "^1.4.5-lts.1"
+    "multer": "^1.4.5-lts.1",
+    "pdf2json": "^3.1.4",
+    "xlsx": "^0.18.5"
   }
 }

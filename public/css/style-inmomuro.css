@@ -1,0 +1,415 @@
+/* --------------------------------------------------------------
+INMOMURO
+-------------------------------------------------------------- */
+.main-left .detalle-cnt{margin-top:40px;}	
+	.main-left .detalle-cnt img.figure{float:none;margin:-150px 0 15px;background:#fff;}
+	.main-left .detalle-cnt .actions .btn{width:100%;}
+
+	.links-top{height:39px;border:1px dotted #ccc;background:#f5f5f5;margin:0 0 20px;}
+		.links-top ul, .links-top ul li{margin:0;padding:0;}
+		.links-top ul li{float:left;border-right:1px dotted #CCC;}
+
+		.links-top ul li a{display:block;height:100%;line-height:39px;padding:0 25px;font-size:15px;
+			font-weight:700;color:#000;
+		}
+		.links-top ul li a:hover{color:#DC0A0A;}
+			.links-top ul li a span{font-size:14px;color:#777;position:relative;top:-1px;}
+
+		.links-top ul li.active a{background:#fff;color:#000;position:relative;}
+			.links-top ul li.active a:before{content:"";display:block;width:100%;top:100%;height:1px;
+				background:#fff;position:absolute;left:0;
+			}
+
+.main-right .wall{max-width:100%;margin:0;padding:0 10px 10px;}	
+	.main-right .wall figure img{width:100%;}
+
+
+
+.topImg{margin-bottom:20px;}
+	.topImg img{width:100%;height:auto;}
+/* --------------------------------------------------------------
+MEDIA QUERIES
+-------------------------------------------------------------- */
+@media(max-width:1366px){
+	.frontLeft .item-list li{max-width:198px;}
+}
+
+@media(max-width:1024px){
+	.frontLeft .inmo-item{width:50%;}
+	.btnText{font-size:16px;line-height:150%;}
+}
+@media (max-width: 1023px) {
+.breadcrumb{cursor:pointer;}
+.breadcrumb:before{content:"";display:block;width:30px;height:30px;background:url(../img/ico/ico.png);position:absolute;top:0;left:0;cursor:pointer;}	
+	.breadcrumb nav{display:none;}
+	.breadcrumb select{display:block;opacity:0;height:30px;position:relative;left:-2px;cursor:pointer;}
+	
+	.image-details-main{width:100%;}
+	.image-details-sidebar{width:100%;position:relative;}
+	.close-details-icon{top:19px;color:#333;}	.close-details-icon:hover{color:#000;}
+	.hd .saveThis{right:55px;}
+
+	#featured article{width:168px;}
+
+	/*detalle*/
+	.img-tabs li a{padding:0 10px;}
+	#linksTop li{padding-left:4px;margin-left:5px;}
+
+	.addthis_default_style .at300b, .addthis_default_style .at300bo, .addthis_default_style .at300m{margin-bottom:5px;}
+	.thumbs #navi{display:none!important;}
+	.actions a span{display:none;}
+	.actions a:after{right:-40px;}
+
+	.map td.td1 {width: 300px;}
+
+	#socialTop li:last-child{width:70px;}
+	.detalle-cnt{padding:13px 10px;}
+	.detalle-cnt dd h3{font-size:14px;}
+	.detalle-cnt .wtitle{margin-left:-10px;margin-right:-10px;}
+
+	table.table tbody tr td{font-size:11px}
+
+/*listado*/
+.main-doble{width:100%;}
+	.main-left{width:26%;}
+	.main-right{width:74%;}
+	.side-right{position:relative;float: left;padding: 0;width: 24%;}	
+		.side-share .addthis_default_style .at300b, .side-share .addthis_default_style .at300bo, .side-share .addthis_default_style .at300m{padding:0 5px;}
+
+.bottom{height:35px;line-height:36px;bottom:0;}
+}
+
+@media(max-width:800px){
+	.frontLeft, .frontRight, .frontLeft #mainImg .twelve{width:100%;max-width:100%;}
+	.frontLeft #quickLinks, .frontLeft #featured{width:100%;max-width:100%;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		padding:10px 30px;
+	}
+	.btnText{font-size:20px;line-height:30px;}
+
+	.frontLeft .item-list li{max-width:100%;}
+	#featured article{width:100%;}
+
+	.frontBanner{float:none;margin:0 auto 20px;clear:both;overflow:hidden;}
+	.frontLeft .inmo-list{max-width:100%;margin:0 0px 16px;}
+	.frontLeft .inmo-item{width:33.333333%;}
+	.wall{margin:0;max-width:100%;}
+	.Wallshare{top:9px;}
+	.wallPost figure img{width:100%;}
+	/*.frontLeft .item-list li{width:50%;max-width:100%;}
+	.frontLeft .bottom-search h4{font-size:20px;}
+	.frontLeft .item-list li:nth-child(4n+4){clear:none;}
+	.frontLeft .item-list li:nth-child(3n+3) {clear:none;}
+
+	.frontLeft .item-list li:nth-child(2n+2){clear:right;}
+	.frontLeft .item-list li:nth-child(2n+1) {clear:left;}
+
+	.frontBanner h3{padding:15px;}
+
+	.frontLeft .inmo-item{width:100%;}*/
+}
+
+@media (max-width: 767px) {
+	.mob{display:none;}
+	
+	
+	body .head-top .columns.seven{float:left!important;width:30%!important;}
+	body .head-top .columns.five{float:left!important;width:70%!important;}
+	
+	body .masonry{left:0;width:106%;top:-12px;}
+	body .element{width:46%;margin-right:2.5%;margin-left:0;}
+	
+	.searchBar .wrap:last-child{margin-right:0;}
+
+	
+	.masonry{left:0;}
+	
+	.head-sub{height:auto;}
+	.site-name{position:relative;left:-8px;}
+	body .head-sub #search-header{width:100%;background:#060606;position:relative;top:0;right:0;padding:10px 0;
+		box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;	
+	}
+	
+		
+		.selecter-selected{font-size:12px;}
+		
+		.head-sub .btn-red{position:absolute;top:-29px;right:0;}
+		
+		.searchBar h4, .searchBar .item-form{width:34.56%;}
+		.searchBar h4{text-align:right;}
+		.searchBar button.btn{width:122px;margin-right:0;clear:right;}
+		.searchBar .wrap{width:34.56%;margin-top:10px;}
+		.searchBar a.btn{margin-top:10px;float:left;margin-left:10px;}
+		
+	.leftBoard{width:100%;padding-right:0px;}
+	.rightBoard{width:100%;}
+		
+/*modal*/
+/*.modalBox{top:0;margin-top:0;height:100%;overflow:auto;}*/
+	.modalImg{display:block;text-align:center;}
+	.modalForm{display:block;width:auto;margin:0;padding:0 0 7px;text-align:center;}
+	
+	.rightBoard h3, #board-header p{line-height:140%;text-align:center;}
+	#board-header p{margin-top:7px;}
+	
+	.image-to-dig{width:212px;height:212px;}
+
+	.rels{max-width:300px;}
+
+/*home page*/
+	.front .head-sub{height:74px;}
+
+.bottom-search{padding-bottom:10px}
+	.bottom-search .btn {position:relative;right:auto;top:auto;margin-top:8px;}
+
+/*detalle*/
+.det-left, .det-right{max-width:100%;width:100%;float:none;margin:0 auto;}
+
+
+#linksTop select{display:block;height:20px;position:relative;top:-2px;}
+#linksTop ul{display:none}
+
+/*listado*/
+.main-doble{width:100%;}
+	.main-left{width:50%;padding-right:10px;}
+	.main-right{width:100%;}
+	.side-right{position:relative;float: left;padding: 0;width:50%;}	
+
+.paginator{margin-bottom:15px}
+
+.frontLeft, .frontRight, .frontLeft #mainImg .twelve{width:100%!important;}
+
+.main-right .wall{margin-bottom:0px;}
+.inmomuro .main-left, .inmomuro .side-right{display:none;}
+.inmomuro .main-left.VISIBLE, .inmomuro .side-right.VISIBLE{display:block;margin-bottom:30px;}
+
+
+}
+
+@media (max-width: 480px) {
+.all-boards li , .board-list .img{width:130px;height:98px;}
+	.all-boards li img{height:auto;max-width:100%;}
+	
+	.image-details-user-info{padding:0 10px;}
+	.similar-images{padding:0 25px;}
+	.boards-with-image .img{width:100px;}
+
+	#Hsearch .wrap{width:173px;margin:0 1px 10px 0;}
+	#Hsearch .item-form{width:50.25%;margin:0 0 10px;}
+
+/*home page*/
+.item-list li{width:50%;margin-bottom:20px;}
+	.item-list article{width:218px;}
+	#Hsocial{top:-37px;}
+
+.front aside.sidebar{display:none}
+
+.home-list h1{cursor:pointer;}
+.list-items{display:none;}
+
+.detalle-info, .detalle-img{float:none;width:100%;}
+.thumbs #navi{display: block!important}
+
+#breadcrumb li{margin-right:15px;padding-right:5px;}
+	#breadcrumb li:first-child{display:none;}
+
+/*listado*/
+.items-list .item{padding-bottom:0}
+.items-list header, .items-list .cnt{margin-right:0px;}
+	.items-list figure{margin:0 0 10px; min-height:90px; min-width:120px}
+	.items-list footer{position:relative;display:block;margin-top:10px;text-align:right;padding:5px 15px 8px;
+		border-top:1px dotted #ccc;background: #f5f5f5;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		width:100%;clear:both;
+	}
+	.items-list footer span{display:inline-block;text-align:left;}
+	.items-list .addFav{margin-left:8px;}
+
+.left-user, .right-user{width:100%;float:none;padding:0;}
+
+/*listado inmobiliarias*/
+.inmo-item{width:100%;}
+
+.frontLeft #mainImg{padding:20px 10px;}
+.frontLeft #Hsearch form{padding:15px 10px 20px;}
+.frontLeft #Hsearch h1{font-size:15px;margin:0 0 10px;}
+.frontLeft #Hsearch .wrap{width:49%;}
+.btnText{font-size:14px;line-height:150%}
+.frontLeft .bottom-search h4{font-size:17px;}
+
+.frontLeft #quickLinks, .frontLeft #featured{padding:10px 0;}
+
+.frontLeft .item-list li{width:100%;}
+
+.frontBanner h3{padding:10px;font-size:16px;}
+	.frontBanner h3 span{margin:0;}
+
+.frontBanner a{bottom:20px;}
+.frontLeft .inmo-item{width:100%;}
+
+.wallPost{padding:10px;}
+	.wallP{margin:0 10px 5px 0;}
+	.wallC{padding:0;}
+
+	.wallPost figure li.even{width:58%;padding-right:0}
+	.wallPost figure li.odd{width:42%;}
+
+	.links-top ul li a{font-size:13px;padding:0 12px;}
+	.links-top ul li a span{font-size:12px}
+
+	.main-left .detalle-cnt img.figure{margin-top:-50px}
+
+}
+
+@media (max-width: 360px) {
+.site-name{display:inline-block;margin-bottom:3px;}
+body .head-sub .btn-red{top:auto;position:relative;}
+
+.head-sub .btn{margin-top:10px;}
+
+body .masonry{left:-2px;}
+body .main-right .masonry{left:0px;}
+body .element{width:100%;margin-right:0;}
+body .main-right .element{margin-left:0;}
+	.bottom{bottom:0;}
+
+	.searchBar h4{float:none;text-align:left;width:145px;}
+	.searchBar .item-form{width:145px;}
+	.searchBar .wrap{width:145px;margin-top:10px;margin-bottom:10px;}
+	.searchBar .btn{width:145px!important;margin:0!important;}
+	.searchBar a.btn{float:right;}
+	
+	.image-to-dig{width:300px;height:300px;}
+	.social-info{margin:0;}
+	
+	.image-details-main .hd{padding-left:10px;}
+	.close-details-icon{right:5px;}	
+	.hd .saveThis{right:35px;}
+	
+	.image-details-sidebar{padding:15px 15px 0;}
+	.similar-images{padding:0;}
+	
+	.boards-with-image .img{width:60px;}
+
+	.items-list figure{margin:0 0 10px; min-height:90px; min-width:120px}
+
+
+/*home*/
+	.front .site-name{width:200px;top:17px;}
+	
+	#Hsearch:before{font-size:14px;}
+	#Hsearch .wrap{width:139px;margin:0 1px 10px 0;}
+	#Hsearch .item-form{width:50%;margin:0 0 10px;}
+
+	.home-list h1{font-size:22px;}
+	.home-list figure{display:none;}
+
+	.item-list li{width:100%;float:none;margin:0 0 20px;}
+	.item-list article{margin:0 auto;width:100%;}
+
+	#Hsocial{top:-26px;}
+
+	.thumbs #navi{display: none!important}
+
+#linksTop{width:100%;}
+.detalleTop{padding-bottom:10px;}
+	.detalleTop select{top:0;margin-top:5px;float:left;}
+
+#breadcrumb{margin:0 0 12px;}
+	#breadcrumb li{margin-right:20px;padding-right:10px;margin-bottom:7px;}
+	
+	#breadcrumb .btn-red{float:left;}
+
+	.detalle header h1{font-size:20px;}
+	.detalle header h2{font-size:14px;}
+
+	.img-tabs li a{font-size: 9px;}
+	.map{display:none}
+	.map.xs-only{display:table-row;}
+	.map.xs-only td.td1, .map.xs-only td.td2{width:100%;}
+
+/*listado*/
+.main-left{width:100%;padding-right:0;}
+	.side-right{width:100%;}	
+
+.top-list h1{font-size:20px;line-height:130%}
+.top-list h4{font-size:16px;}
+.items-list figure{float:none;width:100%;}
+	.items-list img{width:100%;padding:4px;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+
+.items-list header, .items-list .cnt{margin-left:0;}
+.paginator li a{width:25px;margin:0 2px;}
+}
+
+@media (min-width: 550px) and  (max-width: 600px) {
+	#Hsearch .item-form{width:30.25%;}
+	#Hsocial{top:-26px;}
+	.item-list li{width:33%;margin-bottom:20px;}
+		.item-list li article{width:175px;}
+}
+
+@media (min-width: 767px) and  (max-width: 1023px) {
+	.site-name{top:26px;}
+	div#search-header{width:auto;}
+	.head-sub .mob{display:none;}
+	.head-sub #search-header{padding-left:0;}
+	
+	.masonry{left:5px;}
+	.element{width:30.8%;margin-right:1.5%;}
+
+	.main-right .masonry{left:0;width:104%;}
+	.main-right .element{width:46.8%;margin-right:2%;margin-left:0;}
+	
+	.searchBar h4{float:none;}
+	
+	.leftBoard{width:37%;padding-right:20px;}
+	.rightBoard{width:63%;}
+	
+	.image-to-dig{width:230px;height:230px;}
+	
+	.detail-image img {max-height:640px;}
+	
+}
+
+@media (min-width: 1024px) {
+	.mob{display:inline-block}
+	.leftBoard{width:32%;}
+	.rightBoard{width:68%;}
+	
+	.image-to-dig{width:232px;height:232px;}
+
+}
+
+@media (min-width: 1024px) and (max-width:1280px){
+.side-share .addthis_default_style .at300b, .side-share .addthis_default_style .at300bo, .side-share .addthis_default_style .at300m{
+		padding:0 4px;
+	}
+	.main-right .masonry{width:104%;top:-14px;}
+	.main-right .element{margin-left:0;width:47%;margin-right:2.5%;}
+
+}
+
+@media (min-width: 1280px) {
+	.masonry{left:6px;}
+	.main-right .masonry{left:-5px;width:104%;top:-12px;}
+	.main-right .element{width:31%;}
+
+	.leftBoard{width:25%;}
+	.rightBoard{width:75%;}
+	
+	.image-to-dig{width:301px;height:301px;}
+
+	.detalle-info{width:43.95%;}
+	.detalle-img{width:54.222%;}
+
+	.detalle-img{padding:15px 15px 17px;}
+	.detalle-info .ad{padding:5px 10px;}
+}

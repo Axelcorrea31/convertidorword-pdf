@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="google-adsense-account" content="ca-pub-9405282912001499">
+
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -9,7 +11,24 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-<title>ConverDoc</title>
+<link rel="icon" href="img/CONVERDOC-_1_.ico" type="image/x-icon">
+<meta name="description" content="Converdor es una herramienta en línea totalmente gratuita y fácil de usar para transformar tus archivos PDF. ¡Convierte tus documentos sin complicaciones!">
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="vendors/fontawesome-pro-5/css/all.css">
+    <link rel="stylesheet" href="vendors/bootstrap-select/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="vendors/slick/slick.min.css">
+    <link rel="stylesheet" href="vendors/magnific-popup/magnific-popup.min.css">
+    <link rel="stylesheet" href="vendors/jquery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" href="vendors/chartjs/Chart.min.css">
+    <link rel="stylesheet" href="vendors/dropzone/css/dropzone.min.css">
+    <link rel="stylesheet" href="vendors/animate.css">
+    <link rel="stylesheet" href="vendors/timepicker/bootstrap-timepicker.min.css">
+    <link rel="stylesheet" href="vendors/mapbox-gl/mapbox-gl.min.css">
+    <link rel="stylesheet" href="vendors/dataTables/jquery.dataTables.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet">
+    <link rel="stylesheet" href="css/themes.css">
+<title>ConverDoc | Convertidor de archivos en linea gratuito</title>
 <style>
     body{
         list-style: none;
@@ -52,6 +71,55 @@ nav {
     right: 0;
     z-index: 1030; /* Asegúrate de que la nav esté sobre otros elementos */
 }
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 50px;
+  background-color: #f2f2f2; /* Color de fondo del footer */
+  border-top: 1px solid #e1e1e1; /* Línea separadora en la parte superior del footer */
+}
+
+.footer-col {
+  flex: 1; /* Distribución equitativa del espacio */
+  text-align: center; /* Centrado del contenido en cada columna */
+}
+
+.footer-col img {
+  max-width: 100%; /* Asegura que la imagen no exceda el ancho de la columna */
+  height: auto; /* Mantiene la proporción de la imagen */
+}
+@media (max-width: 1000px) { /* Ajusta el breakpoint si es necesario */
+    .container {
+        width: 100%;
+        max-width: none;
+        padding-right: 0;
+        padding-left: 0;
+    }
+    .imagensinlimite{
+        display: none;
+    }
+    .textosinlimite{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 3rem;
+    }
+}
+.card {
+    height: 100%; /* Para que las tarjetas se ajusten al tamaño del contenedor */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.heading-divider2{
+  display: block;
+  width: 75px;
+  height: 3px;
+  margin-top: 5px;
+  margin-bottom: 21px;
+  background-color: #004aad;
+}
 </style>
 </head>
 <body class="bg-light">
@@ -61,8 +129,9 @@ nav {
                 <div class="d-flex align-items-center">
                     <a class="navbar-brand" href="index.html">
                         <img src="img/CONVERDOC (1) (1).png" alt="" style="width: 100%; height: auto; max-width: 50px;">
-                    </a>
+                    
                     <span class="navbar-text" style="font-weight: bold; font-size: 24px;color: #2c6d47;">Conv<span class="navbar-text" style="font-weight: bold; font-size: 24px; color:#004aad;">erdoc</span></span>
+                    </a>
                 </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -120,88 +189,112 @@ nav {
                 <p class="subheading mb-5" style="font-size: 20px;">Convierte tus documentos e imágenes con la más alta calidad, manteniendo el formato y el contenido.</p>
             </div>
             <div class="row">
-                <div class="col-lg-3 col-12 mb-4">
+                <div class="col-lg-3 col-12 mb-4 col-xs-1">
                     <div class="card">
                         <div class="card-body">
                             <a href="Wordapdf.html" style="text-decoration: none; color: black;">
-                                <img src="img/Wordapdf.png" alt="word to pdf" class="img-fluid mx-auto d-block" style="height: 150px;width: 300px;">
+                                <img class="img-fluid d-flex mx-auto" src="img/Wordapdf.png" style="width: 16rem; height: auto;" 
+                                alt="WordaPdf">
                                 <h5 class="card-title text-center pt-4">WORD A PDF</h5>
                                 <p class="card-text text-center">Convierte tu documento WORD a PDF con la mayor calidad y seguridad</p>
                             </a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-12 mb-4">
+                <div class="col-lg-3 col-12 mb-4 col-xs-1">
                     <div class="card">
                         <div class="card-body">
                             <a href="ExcelaPdf.html"style="text-decoration: none; color: black;">
-                                <img src="img/excelapdf.png" alt="word to pdf" class="img-fluid mx-auto d-block" style="height: 150px;width: 300px;">
+                                <img class="img-fluid d-flex mx-auto" src="img/excelapdf.png" style="width: 16rem; height: auto;" 
+                                alt="ExcelaPdf">
                                 <h5 class="card-title text-center pt-4">EXCEL A PDF</h5>
                                 <p class="card-text text-center">Convierte tu documento EXCEL a PDF con la mayor calidad y seguridad</p>
                             </a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-12 mb-4">
+                <div class="col-lg-3 col-12 mb-4 col-xs-1">
                     <div class="card">
                         <div class="card-body">
                             <a href="PoweraPdf.html"style="text-decoration: none; color: black;">
-                                <img src="img/PPTaPdf.png" alt="word to pdf" class="img-fluid mx-auto d-block" style="height: 150px;width: 300px;">
+                                <img class="img-fluid d-flex mx-auto" src="img/PPTaPdf.png" style="width: 16rem; height: auto;" 
+                                alt="PowerPointaPdf">
                                 <h5 class="card-title text-center pt-4">POWER POINT A PDF</h5>
                                 <p class="card-text text-center">Convierte tu documento POWER POINT a PDF con la mayor calidad y seguridad</p>
                             </a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-12 mb-4">
+               
+                <div class="col-lg-3 col-12 mb-4 col-xs-1">
                     <div class="card">
                         <div class="card-body">
                             <a href="JpgaPdf.html"style="text-decoration: none; color: black;">
-                                <img src="img/JpgapDF.png" alt="word to pdf" class="img-fluid mx-auto d-block" style="height: 150px;width: 300px;">
+                                <img class="img-fluid d-flex mx-auto" src="img/JpgapDF.png" style="width: 16rem; height: auto;" 
+                                alt="JpgaPdf">
                                 <h5 class="card-title text-center pt-4">JPG A PDF</h5>
                                 <p class="card-text text-center">Convierte tu documento JPG a PDF con la mayor calidad y seguridad</p>
+                               
                             </a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-12 mb-4">
+               <div>
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9405282912001499"
+                crossorigin="anonymous"></script>
+           <!-- homeanunuciohorizontal -->
+           <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-9405282912001499"
+                data-ad-slot="5721866127"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+           <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+           </script>
+               </div>
+                <div class="col-lg-3 col-12 mb-4 col-xs-1">
                     <div class="card">
                         <div class="card-body">
                             <a href="PdfaWord.html"style="text-decoration: none; color: black;">
-                                <img src="img/Pdfaword.png" alt="word to pdf" class="img-fluid mx-auto d-block" style="height: 150px;width: 300px;">
-                                <h5 class="card-title text-center pt-4">PDF A WORD</h5>
-                                <p class="card-text text-center">Convierte tu documento PDF a WORD con la mayor calidad y seguridad</p>
+                                <img class="img-fluid d-flex mx-auto" src="img/Pdfalock.png" style="width: 15rem; height: auto;" 
+                                alt="PdfProteger">
+                                <h5 class="card-title text-center pt-4">Proteger PDF</h5>
+                                <p class="card-text text-center">Protege tu documento PDF con contraseña para mantenerlo seguro.</p>
                             </a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-12 mb-4">
+                <div class="col-lg-3 col-12 mb-4 col-xs-1">
                     <div class="card">
                         <div class="card-body">
                             <a href="PdfaExcel.html" style="text-decoration: none; color: black;">
-                                <img src="img/pdfaexcel.png" alt="word to pdf" class="img-fluid mx-auto d-block" style="height: 150px;width: 300px;">
+                                <img class="img-fluid d-flex mx-auto" src="img/pdfaexcel.png" style="width: 15rem; height: auto;" 
+                                alt="PdfaExcel">
                                 <h5 class="card-title text-center pt-4">PDF A EXCEL</h5>
                                 <p class="card-text text-center">Convierte tu documento PDF a EXCEL con la mayor calidad y seguridad</p>
                             </a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-12 mb-4">
+                <div class="col-lg-3 col-12 mb-4 col-xs-1">
                     <div class="card">
                         <div class="card-body">
-                            <a href="pdfaPower.html"style="text-decoration: none; color: black;">
-                                <img src="img/PdfaPPT.png" alt="word to pdf" class="img-fluid mx-auto d-block" style="height: 150px;width: 300px;">
-                                <h5 class="card-title text-center pt-4">PDF A POWER POINT</h5>
-                                <p class="card-text text-center">Convierte tu documento PDF a POWER POINT con la mayor calidad y seguridad</p>
+                            <a href="pdfaHtml.html"style="text-decoration: none; color: black;">
+                                <img class="img-fluid d-flex mx-auto" src="img/Pdfahtml.png" style="width: 15rem; height: auto;" 
+                                alt="pdfaHtmlf">
+                                <h5 class="card-title text-center pt-4">PDF A HTML</h5>
+                                <p class="card-text text-center">Convierte tu documento PDF a HTML con la mayor calidad y seguridad</p>
                             </a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-12 mb-4 mb-5">
+                <div class="col-lg-3 col-12 mb-4 mb-5 col-xs-1">
                     <div class="card">
                         <div class="card-body">
                             <a href="pdfajpg.html"style="text-decoration: none; color: black;">
-                                <img src="img/PdfaJpg.png" alt="word to pdf" class="img-fluid mx-auto d-block" style="height: 150px;width: 300px;">
+                                <img class="img-fluid d-flex mx-auto" src="img/PdfaJpg.png" style="width: 16rem; height: auto;" 
+                                alt="PdfaJpg">
                                 <h5 class="card-title text-center pt-4">PDF A JPG</h5>
                                 <p class="card-text text-center">Convierte tu documento PDF a JPG con la mayor calidad y seguridad</p>
                             </a>
@@ -211,14 +304,16 @@ nav {
             </div>
         </div>
     </section>
+    
     <section class="bg-custom">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="imagensinlimite col-lg-6">
                     <img src="img/sinlimite.png" alt="">
                 </div>
-                <div class="col-lg-6 d-flex flex-column align-items-center justify-content-center mt-5 text-center">
-                    <h2 class="pb-2" style="color: white; font-weight: 800;">Sin Límite de Uso</h2>
+                <div class="textosinlimite col-lg-6 d-flex flex-column align-items-center justify-content-center mt-5 text-center">
+                    <h2 class="pb-1" style="color: white; font-weight: 800;">Sin Límite de Uso</h2>
+                    <span class="heading-divider2 mx-auto"></span>
                     <p style="color: white;">Disfruta de conversiones ilimitadas sin restricciones. Nuestra plataforma no impone límites en la cantidad de archivos que puedes convertir ni en el tamaño de los mismos. Convierte tantos archivos como necesites, cuando los necesites.</p>
     
                 </div>
@@ -226,10 +321,20 @@ nav {
         </div>
     
     </section>
-    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9405282912001499"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-format="fluid"
+     data-ad-layout-key="-d0-7+3j+s-f9"
+     data-ad-client="ca-pub-9405282912001499"
+     data-ad-slot="9611239746"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
     <section class="bg-white pt-10 pb-11">
         <div class="container container-xxl">
-    <h2 class="text-dark lh-1625 text-center pt-5 pb-5">¿Por qué elegirnos?</h2>
+        <h2 class="text-dark lh-1625 text-center pt-5 pb-5">¿Por qué elegir <span style="color: #2c6d47;">Conv</span><span style="color: #004aad;">erdoc</span></h2>
           <span class="heading-divider mx-auto"></span>
           <div class="row justify-content-between mt-10">
             <div class="col-lg-4 mb-6 mb-lg-0" data-animate="fadeInUp">
@@ -275,64 +380,17 @@ nav {
         </div>
       </section>
 
-      <footer class="bg-dark text-white pt-4 pb-4">
-        <div class="container">
-            <div class="row">
-                <!-- Primera columna -->
-                <div class="col-md-4 mb-3">
-                    <img  src="img/CONVERDOC (1).png" alt="" style="width: 200px;" height="100px">
-                    <p class="pt-3">Somos tu solución segura y eficiente para convertir todo tipo de archivos.</p>
-                </div>
-                <!-- Segunda columna -->
-                <div class="col-md-4 mb-3">
-                    <h5>Formatos</h5>
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link collapsed text-white" href="#" data-bs-toggle="collapse" data-bs-target="#collapseWord" aria-expanded="false" aria-controls="collapseWord">WORD</a>
-                            <div class="collapse" id="collapseWord">
-                                <div class="card card-body bg-secondary">
-                                    Detalles de conversión para Word.
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link collapsed text-white" href="#" data-bs-toggle="collapse" data-bs-target="#collapseExcel" aria-expanded="false" aria-controls="collapseExcel">EXCEL</a>
-                            <div class="collapse" id="collapseExcel">
-                                <div class="card card-body bg-secondary">
-                                    Detalles de conversión para Excel.
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link collapsed text-white" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePowerPoint" aria-expanded="false" aria-controls="collapsePowerPoint">POWER POINT</a>
-                            <div class="collapse" id="collapsePowerPoint">
-                                <div class="card card-body bg-secondary">
-                                    Detalles de conversión para PowerPoint.
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link collapsed text-white" href="#" data-bs-toggle="collapse" data-bs-target="#collapseJPG" aria-expanded="false" aria-controls="collapseJPG">JPG</a>
-                            <div class="collapse" id="collapseJPG">
-                                <div class="card card-body bg-secondary">
-                                    Detalles de conversión para JPG.
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Tercera columna -->
-                <div class="col-md-4 mb-3">
-                    <h5>Soporte Técnico</h5>
-                    <p>¿Necesitas ayuda? Nuestro equipo de soporte está aquí para asistirte con cualquier problema o pregunta que tengas.</p>
-                    <p>Email: soporte@converdoc.com</p>
-                </div>
-            </div>
-            <div class="text-center mt-4">
-                <p>© 2024 Converdoc. All Rights Reserved</p>
-            </div>
+      <footer class="footer">
+        <div class="footer-col">
+          <img src="img/CONVERDOC (1).png" alt="Logo de Converdoc" style="width: 70px;">
         </div>
-    </footer>
+        <div class="footer-col">
+          © 2024 Converdoc. All Rights Reserved.
+        </div>
+        <div class="footer-col">
+          Soporte: <a href="mailto:soporte@converdoc.com">converdoc@gmail.com</a>
+        </div>
+      </footer>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" crossorigin="anonymous"></script>
